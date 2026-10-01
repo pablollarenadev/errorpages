@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Este sitio no está disponible por ahora | Protegido por Cloudflare</title>
+<style>
+  /* ============ PERSONALIZA AQUÍ ============ */
+  :root {
+    --bg: #eef2f5;
+    --ink: #10222f;
+    --muted: #51636f;
+    --line: #b9c6cf;
+    --ok: #1f7a55;
+    --fail: #d8441f;
+    --panel: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1a23;
+      --ink: #e8eff3;
+      --muted: #9fb0bb;
+      --line: #35505f;
+      --ok: #4cc38a;
+      --fail: #ff7a55;
+      --panel: #132530;
+    }
+  }
+  /* ========================================== */
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    display: flex;
+    justify-content: center;
+    padding: 56px 24px;
+  }
+  main { width: 100%; max-width: 680px; }
+
+  h1 {
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    margin: 0 0 18px;
+    max-width: 14ch;
+  }
+  .lead { font-size: 1.125rem; color: var(--muted); margin: 0 0 44px; max-width: 52ch; }
+
+  .path { margin: 0 0 44px; }
+  .path svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .path text { font-family: inherit; fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .path .sub { fill: var(--muted); font-weight: 400; font-size: 13px; }
+  .path .ok-line { stroke: var(--ok); stroke-width: 3; }
+  .path .bad-line { stroke: var(--fail); stroke-width: 3; stroke-dasharray: 3 9; stroke-linecap: round; }
+  .path .node { fill: var(--panel); stroke-width: 3; }
+
+  h2 { font-size: 1.05rem; margin: 0 0 8px; }
+  .what p, .what li { color: var(--muted); max-width: 56ch; }
+  .what ul { padding-left: 1.1rem; margin: 8px 0 28px; }
+  .what li { margin-bottom: 6px; }
+
+  .retry {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 6px;
+  }
+  .retry:hover { opacity: .88; }
+  .retry:focus-visible { outline: 3px solid var(--fail); outline-offset: 3px; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: .875rem;
+    color: var(--muted);
+  }
+  footer dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 20px; margin: 0 0 14px; }
+  footer dt { font-weight: 600; color: var(--ink); }
+  footer dd { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; word-break: break-all; }
+  footer p { margin: 0 0 14px; max-width: 60ch; }
+
+  details { margin-top: 6px; }
+  summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+  summary:focus-visible { outline: 3px solid var(--fail); outline-offset: 3px; }
+  .box { margin-top: 4px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Este sitio no está disponible por ahora</h1>
+  <p class="lead">El sitio tiene un problema de configuración que impide mostrar la página. Tu navegador y la protección de Cloudflare funcionan bien.</p>
+
+  <div class="path" role="img" aria-label="Tu navegador funciona. Cloudflare funciona. El sitio web no está configurado correctamente.">
+    <svg viewBox="0 0 640 110">
+      <line class="ok-line" x1="60" y1="40" x2="290" y2="40"/>
+      <line class="bad-line" x1="350" y1="40" x2="580" y2="40"/>
+      <circle class="node" cx="40" cy="40" r="18" stroke="var(--ok)"/>
+      <circle class="node" cx="320" cy="40" r="18" stroke="var(--ok)"/>
+      <circle class="node" cx="600" cy="40" r="18" stroke="var(--fail)"/>
+      <path d="M32 40l6 6 11-12" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M312 40l6 6 11-12" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M593 33l14 14M607 33l-14 14" stroke="var(--fail)" stroke-width="3" stroke-linecap="round"/>
+      <text x="40" y="84" text-anchor="middle">Tu navegador</text>
+      <text x="40" y="102" text-anchor="middle" class="sub">Funciona</text>
+      <text x="320" y="84" text-anchor="middle">Cloudflare</text>
+      <text x="320" y="102" text-anchor="middle" class="sub">Funciona</text>
+      <text x="600" y="84" text-anchor="end">Este sitio</text>
+      <text x="600" y="102" text-anchor="end" class="sub">Mal configurado</text>
+    </svg>
+  </div>
+
+  <section class="what">
+    <h2>Qué puedes hacer</h2>
+    <ul>
+      <li>Vuelve a intentarlo en unos minutos. Si el equipo del sitio ya lo está corrigiendo, se resolverá solo.</li>
+      <li>Si el problema continúa, avisa a quien administra el sitio e indícale el ID de Ray que aparece abajo.</li>
+    </ul>
+    <a class="retry" href="javascript:location.reload()">Volver a intentar</a>
+  </section>
+
+  <footer>
+    <dl>
+      <dt>ID de Ray</dt><dd>::RAY_ID::</dd>
+      <dt>Tu IP</dt><dd>::CLIENT_IP::</dd>
+    </dl>
+    <p>Este ID ayuda a quien administra el sitio a localizar el error exacto.</p>
+
+    <div class="box">::CLOUDFLARE_ERROR_1000S_BOX::</div>
+  </footer>
+</main>
+</body>
+</html>
