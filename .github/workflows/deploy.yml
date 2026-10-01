@@ -1,0 +1,52 @@
+name: Deploy a Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Nombre del proyecto en Cloudflare Pages. Puedes sobrescribirlo con la
+  # variable de repositorio CLOUDFLARE_PAGES_PROJECT.
+  PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'errorpages' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generar páginas
+        run: node build.mjs
+
+      - name: Crear el proyecto de Pages si no existe
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if ! npx --yes wrangler@4 pages project list | grep -qw "$PROJECT_NAME"; then
+            npx --yes wrangler@4 pages project create "$PROJECT_NAME" --production-branch=main
+          fi
+
+      - name: Publicar en Cloudflare Pages
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy dist --project-name=${{ env.PROJECT_NAME }} --branch=${{ github.head_ref || github.ref_name }} --commit-dirty=true

@@ -1,0 +1,9 @@
+{
+  "name": "errorpages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node build.mjs && npx --yes wrangler@4 pages dev dist"
+  }
+}
